@@ -138,7 +138,7 @@ Itunes.prototype.handleLogin = function(error, response, body) {
         }
         
       }
-      errorCallback(error);
+      errorCallback({error:error,cookies:cookies});
     } 
     else {
       const account = myAccount[0]
