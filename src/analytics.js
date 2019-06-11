@@ -14,7 +14,8 @@ function Itunes(username, password, options) {
     appleWidgetKey: '22d448248055bab0dc197c6271d738c3',
     concurrentRequests: 2,
     errorCallback: function(e) { console.log('Login failure: ' + e); },
-    successCallback: function(d) { console.log('Login success.'); }
+    successCallback: function(d) { console.log('Login success.'); },
+    myacinfo: options.myacinfo
   };
   
   _.extend(this.options, options);
@@ -95,6 +96,8 @@ Itunes.prototype.handleLogin = function(error, response, body) {
       errorCallback(error);
     } else {
       //extract the account info cookie
+      cookies.push('myacinfo=' + this.options.myacinfo);
+      
       var myAccount = /myacinfo=.+?;/.exec(cookies);
       
       if (myAccount == null || myAccount.length == 0) {
