@@ -96,7 +96,7 @@ Itunes.prototype.handleLogin = function(error, response, body) {
       errorCallback(error);
     } else {
       //extract the account info cookie
-      cookies.push('myacinfo=' + this.options.myacinfo);
+      cookies.push('myacinfo=' + self.options.myacinfo);
       
       var myAccount = /myacinfo=.+?;/.exec(cookies);
       
